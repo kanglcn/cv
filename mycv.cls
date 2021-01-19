@@ -44,6 +44,7 @@
   pdfpagemode={UseOutlines},
   pdfpagelayout={OneColumn},
 }
+\urlstyle{same}
 
 % Page layout
 \RequirePackage{geometry}
@@ -76,7 +77,10 @@
 \RequirePackage{xparse}
 
 % Personal info
-\newcommand*{\name}[1]{\gdef\@name{#1}}
+\NewDocumentCommand{\name}{o m}{%
+  \gdef\@name{#2}
+  \IfValueTF{#1}{\gdef\@shortname{#1}}{\gdef\@shortname{#2}}
+}
 \newcommand*{\address}[1]{\gdef\@address{#1}}
 \newcommand*{\phone}[1]{\gdef\@phone{#1}}
 \newcommand*{\email}[1]{\gdef\@email{#1}}
@@ -139,13 +143,13 @@
         }%
         \ifthenelse{\isundefined{\@email}}{}{%
           \ifbool{isstart}{\setbool{isstart}{false}}{~~$\cdot$~~}%
-          \href{mailto:\@email}{\faIcon{envelope}~\@email}%
+          \href{mailto:\@email}{\faIcon{envelope}~\nolinkurl{\@email}}%
         }%
         \ifthenelse{\isundefined{\@mobile} \AND \isundefined{\@email}}{}{\\}%
         \setbool{isstart}{true}%
         \ifthenelse{\isundefined{\@homepage}}{}{%
           \ifbool{isstart}{\setbool{isstart}{false}}{~~$\cdot$~~}%
-          \href{\@homepage}{\faIcon{home}~\@homepage}%
+          \href{\@homepage}{\faIcon{home}~\nolinkurl{\@homepage}}%
         }%
         \ifthenelse{\isundefined{\@github}}{}{%
           \ifbool{isstart}{\setbool{isstart}{false}}{~~$\cdot$~~}%
@@ -169,7 +173,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \fancyhfoffset[l]{\dimexpr\Gm@lmargin-\Gm@rmargin\relax}
 \fancyfoot[L]{\textcolor{Gray}{\@date}}
-\fancyfoot[C]{\textcolor{Gray}{\@name~~~$\cdot$~~~Curriculum Vitae}}
+\fancyfoot[C]{\textcolor{Gray}{\@shortname~~~$\cdot$~~~Curriculum Vitae}}
 \fancyfoot[R]{\textcolor{Gray}{\thepage}}
 
 % Publication
@@ -250,19 +254,19 @@
 }
 
 \renewcommand*{\mkbibnamegiven}[1]{\ifitemannotation{highlight}{\mkbibbold{#1}}{#1}}
-\renewcommand*{\mkbibnamefamily}[1]{\ifitemannotation{highlight}{\mkbibbold{#1}}{#1}}
+\renewcommand*{\mkbibnamefamily}[1]{\ifitemannotation{highlight}{\mkbibbold{#1}}{#1}\ifitemannotation{dagger}{\textsuperscript{\textdagger}}}
 \renewcommand*{\mkbibnameprefix}[1]{\ifitemannotation{highlight}{\mkbibbold{#1}}{#1}}
 \renewcommand*{\mkbibnamesuffix}[1]{\ifitemannotation{highlight}{\mkbibbold{#1}}{#1}}
 \DeclareFieldFormat{addendum}{\textcolor{Gray}{#1}}
 \defbibenvironment{bibliography}{\begin{enumerate}}{\end{enumerate}}{\item}
 
-\newcommand*{\publications}[2][]{%
+\NewDocumentCommand{\publications}{o m}{%
   \begin{refsection}[#2]
     \nocite{*}
-    \ifthenelse{\equal{#1}{}}{%
-      \printbibliography[heading=none]%
-    }{%
+    \IfValueTF{#1}{%
       \printbibliography[heading=none,#1]%
+    }{%
+      \printbibliography[heading=none]%
     }
   \end{refsection}
 }
