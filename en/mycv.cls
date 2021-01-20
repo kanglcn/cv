@@ -15,9 +15,9 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{mycv}
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions%
-\LoadClass{ctexart}
+\LoadClass{article}
 
 % Check for obsoleted LaTeX packages
 \RequirePackage[l2tabu,orthodox]{nag}

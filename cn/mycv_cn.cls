@@ -70,7 +70,6 @@
 \RequirePackage{etoolbox}
 \RequirePackage{graphicx}
 \RequirePackage{linegoal}
-\RequirePackage{microtype}
 \RequirePackage{parskip}
 \RequirePackage{tabu}
 \RequirePackage{xifthen}
@@ -109,7 +108,7 @@
 }
 
 % \printdate{date}
-\newcommand*{\printdate}[1]{\hspace*{\fill}{\itshape#1}}%
+\newcommand*{\printdate}[1]{\hspace*{\fill}{#1}}%
 
 % \begin{positions}
 %   \entry{<title>}{<date>}
@@ -173,7 +172,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \fancyhfoffset[l]{\dimexpr\Gm@lmargin-\Gm@rmargin\relax}
 \fancyfoot[L]{\textcolor{Gray}{\@date}}
-\fancyfoot[C]{\textcolor{Gray}{\@shortname~~~$\cdot$~~~Curriculum Vitae}}
+\fancyfoot[C]{\textcolor{Gray}{\@shortname~~~$\cdot$~~~个人简历}}
 \fancyfoot[R]{\textcolor{Gray}{\thepage}}
 
 % Publication
