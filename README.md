@@ -13,7 +13,8 @@ If you want to use this template for your CV, you need to also update the `cv.xm
 
 - Waite for fixing the bug.
 - Update Chinese CV.
-- Waite for Zotero 5.1 which may permit add custom information field to add `author+an`.
+- Waite for Zotero 5.1 which may permit add custom information field to add `author+an`. For example:
+`author+an = {1=highlight; 2=highlight; 3=first,corresponding; 13=corresponding}`
 
 ## License
 
