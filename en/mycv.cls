@@ -149,7 +149,7 @@
         \setbool{isstart}{true}%
         \ifthenelse{\isundefined{\@homepage}}{}{%
           \ifbool{isstart}{\setbool{isstart}{false}}{~~$\cdot$~~}%
-          \href{\@homepage}{\faIcon{home}~\nolinkurl{\@homepage}}%
+          \href{https://\@homepage}{\faIcon{home}~\nolinkurl{\@homepage}}%
         }%
         \ifthenelse{\isundefined{\@github}}{}{%
           \ifbool{isstart}{\setbool{isstart}{false}}{~~$\cdot$~~}%
