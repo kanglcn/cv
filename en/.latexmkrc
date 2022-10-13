@@ -1,5 +1,5 @@
 # vim: set filetype=perl
-$pdf_mode = 1; # using pdflatex
+$pdf_mode = 5; # using xelatex
 
 $pdflatex = "pdflatex -file-line-error -synctex=1 -shell-escape %O %S";
 
@@ -16,4 +16,4 @@ $xdvipdfmx = "xdvipdfmx -E -o %D %O %S";
 
 # $bibtex_use =1.5; # clean bll file
 
-$clean_ext = "synctex.gz xdv xmpi timestamp lua run.xml pdfa.xmpi"; # external clean file
+$clean_ext = "synctex.gz xdv xmpi bbl timestamp lua run.xml pdfa.xmpi"; # external clean file

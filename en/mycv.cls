@@ -23,9 +23,7 @@
 \RequirePackage[l2tabu,orthodox]{nag}
 
 % Fonts
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
-\RequirePackage{kpfonts}
+\RequirePackage{kpfonts-otf}
 \RequirePackage[fixed]{fontawesome5}
 
 % Color
@@ -50,7 +48,7 @@
 \RequirePackage{geometry}
 \RequirePackage[strict]{changepage}
 \geometry{
-  a4paper,
+  letterpaper,
   top=2cm,
   bottom=2cm,
   left=4.5cm,
@@ -119,8 +117,17 @@
   % \entry{<title>}{<date>}
   \newcommand*{\entry}[2]{\item \textbf{##1}\printdate{##2}}%
   \begin{itemize}[leftmargin=0pt,label={}]%
-    }{%
+}{%
 \end{itemize}%
+}
+
+% \begin{summary}
+%  summary
+% \end{summary}
+\newenvironment{summary}{%
+  \begin{adjustwidth}{\dimexpr\Gm@rmargin-\Gm@lmargin\relax}{}
+}{%
+  \end{adjustwidth}
 }
 
 % Header

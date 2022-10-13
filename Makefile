@@ -7,6 +7,6 @@ cv_cn.pdf: cn/*.tex
 	cd cn && latexmk cv_cn.tex
 
 clean:
-	cd en && latexmk -c && rm pdfa.xmpi
-	cd cn && latexmk -c && rm creationdate.lua creationdate.timestamp pdfa.xmpi
+	cd en && latexmk -c && rm creationdate.lua creationdate.timestamp cv.bbl pdfa.xmpi
+	cd cn && latexmk -c && rm creationdate.lua creationdate.timestamp cv.bbl pdfa.xmpi
 
